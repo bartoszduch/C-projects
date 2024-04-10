@@ -1,0 +1,74 @@
+#include <iostream>
+using namespace std;
+
+class fib {
+public:
+	int rozmiar;
+	int* tab;
+	
+	fib() {
+
+	}
+	fib(int rozmiar) {
+		this->rozmiar = rozmiar;
+		tab = new int[rozmiar];
+
+		tab[0] = 1;
+		tab[1] = 1;
+		for (int i = 2; i < rozmiar; i++) {
+			tab[i] = tab[i - 2] + tab[i - 1];
+		}
+	}
+	void print() {
+		for (int i = 0; i < rozmiar; i++) {
+			cout << i + 1 << ") element ciagu: " << tab[i] << endl;
+
+		}
+	}
+	void add();
+
+};
+void fib::add() {
+	rozmiar += 1;
+	int* newtab = new int[rozmiar];
+	for (int i = 0; i < rozmiar - 1; i++) {
+		newtab[i] = tab[i];
+	}
+	newtab[rozmiar - 1] = tab[rozmiar - 2] + tab[rozmiar - 3];
+	delete[]tab;
+	tab = newtab;
+
+}
+class fib_start :public fib {
+public:
+	int a, b;
+
+	fib_start(int a, int b, int rozmiar){
+		this->a = a;
+		this->b = b;
+		this->rozmiar = rozmiar;
+		int* tab = new int[rozmiar];
+		tab[0] = a;
+		tab[1] = b;
+		for (int i = 2; i < rozmiar; i++) {
+			tab[i] = tab[i - 1] + tab[i - 2];
+		}
+
+	}
+
+
+};
+
+int main() {
+	int r;
+	cout << "podaj rozmiar tablicy:" << endl;
+	cin >> r;
+	fib_start c1(3,4,r);
+	c1.print();
+
+
+
+
+
+
+}
