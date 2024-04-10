@@ -1,0 +1,70 @@
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
+using namespace std;
+
+class jednostka {
+public:
+	int HP;
+	jednostka() {
+
+	}
+	jednostka(int HP) {
+		this->HP = HP;
+	}
+};
+
+class ERK : public jednostka {
+public:
+	int tempo_zbierania_zasobow;
+	ERK() {
+
+	}
+	ERK(int HP, int tempo_zbierania_zasobow) {
+		this->HP=HP;
+		this->tempo_zbierania_zasobow = tempo_zbierania_zasobow;
+	}
+	void set_temp(int tempo_zbierania_zasobow) {
+		this->tempo_zbierania_zasobow = tempo_zbierania_zasobow;
+	}
+};
+class Kruk :public jednostka {
+public:
+	int energia;
+	Kruk() {
+
+	}
+	Kruk(int HP, int energia) {
+		this->HP=HP;
+		this->energia = energia;
+	}
+	int przyspiesz(ERK obiekt);
+};
+int Kruk::przyspiesz(ERK obiekt) {
+	int tempo_zbierania_zasobow = obiekt.tempo_zbierania_zasobow * 2;
+	obiekt.set_temp(tempo_zbierania_zasobow);
+	energia /= 2;
+	return obiekt.tempo_zbierania_zasobow;
+
+}
+
+int main() {
+	jednostka jednostka1(20);
+	ERK erk1(30,10);
+	Kruk kruk1(40, 100);
+
+
+	cout << "wypiszemy warosci poszczegolnych obietkow: " << endl;
+	cout << "jednostka1: " << endl << "HP: " << jednostka1.HP << endl << endl;
+	cout << "erk1: " << endl << "HP: " << erk1.HP << endl << "tempo zbierania zasobow: " << erk1.tempo_zbierania_zasobow << endl << endl;
+	cout << "kruk1: " << endl << "HP: " << kruk1.HP << endl << "energia: " << kruk1.energia << endl << endl;
+	kruk1.przyspiesz(erk1);
+	//erk1.set_temp(166);
+
+	cout << "wypiszemy warosci poszczegolnych obietkow po zmianie wartosci: " << endl;
+	cout << "jednostka1: " << endl << "HP: " << jednostka1.HP << endl << endl;
+	cout << "erk1: " << endl << "HP: " << erk1.HP << endl << "tempo zbierania zasobow: " << erk1.tempo_zbierania_zasobow << endl << endl;
+	cout << "kruk1: " << endl << "HP: " << kruk1.HP << endl << "energia: " << kruk1.energia << endl << endl;
+
+	return 0;
+}
