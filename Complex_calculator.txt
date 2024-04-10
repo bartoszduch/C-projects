@@ -1,0 +1,40 @@
+#include <iostream>
+using namespace std;
+
+class complex {\
+private:
+	int rel;
+	int imag;
+
+public:
+	void set_rel(int rel1) {
+		rel = rel1;
+	}
+	void set_imag(int imag1) {
+		imag = imag1;
+	}
+	int get_rel() {
+		return rel;
+	}
+	int get_imag() {
+		return imag;
+	}
+	bool isReal();
+	bool isImag();
+};
+
+bool complex::isReal() {
+	if (imag == 0) {
+		return true;
+	}
+	else {
+		return false;
+	}
+}
+bool complex::isImag() {
+	if (rel == 0 && imag!=0) {
+		return true;
+	}
+	else {
+		return false;
+	}
