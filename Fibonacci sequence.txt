@@ -26,7 +26,6 @@ public:
 		}
 	}
 	void add();
-
 };
 void fib::add() {
 	rozmiar += 1;
@@ -37,7 +36,6 @@ void fib::add() {
 	newtab[rozmiar - 1] = tab[rozmiar - 2] + tab[rozmiar - 3];
 	delete[]tab;
 	tab = newtab;
-
 }
 class fib_start :public fib {
 public:
@@ -53,10 +51,7 @@ public:
 		for (int i = 2; i < rozmiar; i++) {
 			tab[i] = tab[i - 1] + tab[i - 2];
 		}
-
 	}
-
-
 };
 
 int main() {
@@ -65,10 +60,4 @@ int main() {
 	cin >> r;
 	fib_start c1(3,4,r);
 	c1.print();
-
-
-
-
-
-
 }
